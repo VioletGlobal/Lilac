@@ -1,11 +1,12 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
+
 
 android {
     compileSdkVersion build_versions.target_sdk
     buildToolsVersion build_versions.build_tools
     defaultConfig {
-        applicationId "com.lilac"
         // RenderScript has 64 bit support starting API 21.
+
         renderscriptTargetApi 21
         renderscriptSupportModeEnabled true
         vectorDrawables {
@@ -25,9 +26,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation deps.support.app_compat
 }

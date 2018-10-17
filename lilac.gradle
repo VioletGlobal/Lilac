@@ -1,0 +1,46 @@
+/**
+ Shared file between builds so that they can all use the same dependencies and
+ * maven repositories.
+ * */
+//空映射
+ext.deps = [:]
+def versions = [:]
+//支持库版本
+versions.support = "1.0.0"
+//grdle的配置版本
+versions.android_gradle_plugin = "3.2.0"
+
+def deps = [:]
+
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+
+
+//build相关信息
+def build_versions = [:]
+build_versions.min_sdk = 14
+build_versions.target_sdk = 28
+build_versions.build_tools = "28.0.3"
+ext.build_versions = build_versions
+
+//支持包
+def support = [:]
+support.annotations = "androidx.annotation:annotation:$versions.support"
+support.app_compat = "androidx.appcompat:appcompat:$versions.support"
+support.recyclerview = "androidx.recyclerview:recyclerview:$versions.support"
+support.cardview = "androidx.cardview:cardview:$versions.support"
+support.design = "com.google.android.material:material:$versions.support"
+support.v4 = "androidx.legacy:legacy-support-v4:$versions.support"
+support.core_utils = "androidx.legacy:legacy-support-core-utils:$versions.support"
+deps.support = support
+
+ext.deps = deps
+
+def addRepos(RepositoryHandler handler) {
+//    handler.google()
+    handler.jcenter()
+    handler.maven { url "https://jitpack.io" }
+    handler.maven { url 'https://maven.google.com' }
+//    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
+}
+
+ext.addRepos = this.&addRepos
