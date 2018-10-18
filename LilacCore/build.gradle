@@ -6,7 +6,6 @@ android {
     buildToolsVersion build_versions.build_tools
     defaultConfig {
         // RenderScript has 64 bit support starting API 21.
-
         renderscriptTargetApi 21
         renderscriptSupportModeEnabled true
         vectorDrawables {
@@ -31,4 +30,5 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation deps.support.app_compat
 }
