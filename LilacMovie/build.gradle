@@ -1,10 +1,10 @@
-apply plugin: 'com.android.library'
-
+apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion build_versions.target_sdk
     buildToolsVersion build_versions.build_tools
     defaultConfig {
+        applicationId "com.lilac.movie"
         // RenderScript has 64 bit support starting API 21.
         renderscriptTargetApi 21
         renderscriptSupportModeEnabled true
@@ -34,6 +34,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api deps.support.app_compat
+    implementation project(':LilacCore')
+    //room的配置
+    implementation deps.room.runtime
+    //Rx的支持
+    implementation deps.rxjava2
+    //Rx的安卓支持库
+    implementation deps.rx_android
 
 }
